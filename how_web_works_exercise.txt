@@ -1,0 +1,39 @@
+Part One: Solidify Terminology
+In your own terms, define the following terms:
+
+What is HTTP? -- a set of instructions, structures, etc., that are used to send and retrieve information throughout the world wide web
+What is a URL?  -- 'uniform resource locator' or a string that includes a protocol (http, ftp, etc), a domain, and  specific files or folders to access, along with possible query strings attached
+What is DNS? -- domain name system.  acts almost like a lookup table; takes URLs that humans enter and converts them into the IP addresses needed to access other computers on the internet or WWW
+What is a query string?  at the end of a URL, beginning with ? and of the format ?term=value&otherterm=othervalue&.... 
+What are two HTTP verbs and how are they different?   GET and POST are the most common.  GET is for retrieving info from a server without any server-side changes or side-effects.  POST is for sending info to a server and asking the server to save/update/delete/otherwise change something on the server side
+What is an HTTP request?  --sent to a server and is a request for information in a specific file, folder, etc. (html files, images, other data)
+What is an HTTP response?  --  received by a client from a server;  includes the info requested as well as status information about the request (success, error, etc)
+What is an HTTP header? Give a couple examples of request and response headers you have seen.  -- info either sent to or received by an http server that includes details about language, file types, etc. that should be used
+What are the processes that happen when you type “http://somesite.com/some/page.html” into a browser? --
+    --  domain name is sent to a DNS;  DNS translates domain name into an IP address.  
+    --  request is sent via the appropriate protocol (http, ftp, etc) to the server at the IP address
+    --  server sends back the requested info
+    --  browser parses the info received, sends additional requests to DNS servers based on links to other files, images, etc
+    --  browser loads html, other info as it's received by other requests
+    --  browser displays content from the various requests that were sent & responses received
+
+Part Two: Practice Tools
+Using curl, make a GET request to the icanhazdadjoke.com API to find all jokes involving the word “pirate”
+    --  curl -G https://icanhazdadjoke.com/search?term=pirate
+Use dig to find what the IP address is for icanhazdadjoke.com
+    dig https://icanhazdadjoke.com .  server is at 172.29.144.1
+Make a simple web page and serve it using python3 -m http.server. Visit the page in a browser.
+    within the folder i wanted to use, i used terminal command:  python -m http.server
+    i entered 'localhost:8000' in my browser search bar.
+    also installed LiveServer extension in VScode and opened an html doc that way.
+
+
+Part Three: Explore Dev Tools
+Build a very simple HTML form that uses the GET method (it can use the same page URL for the action) when the form is submitted.
+  see getform.html
+
+Add a field or two to the form and, after submitting it, explore in Chrome Developer tools how you can view the request and response headers.
+    can see the URL with the new query string based on the two inputs provided in getform.html
+
+Edit the page to change the form type to POST, refresh in the browser and re-submit. Do you still see the field in the query string? Explore in Chrome how you can view the request and response headers, as well as the form data.
+    when changing method for the form to POST, i get an HTTP error 405: "Method Not Allowed"
